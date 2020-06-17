@@ -17,21 +17,35 @@ public class Mediopago implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idMedioPago;
+	private Integer idMedioPago;
 	
 	@NotEmpty(message = "Debe ingresar medio de pago*")
-	@Column(name="des_mediopago",nullable = false,length = 50)
+	@Column(name="desMedioPago",nullable = false,length = 50)
 	private String desMedioPago;
 	
 	@NotEmpty(message = "Debe ingresar numero de seguridad*")
 	@Column(name="seguridad",nullable = false,length = 50)
 	private String seguridad;
 
-	public int getIdMedioPago() {
+	public Mediopago() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Mediopago(Integer idMedioPago, String desMedioPago, String seguridad) {
+		super();
+		this.idMedioPago=idMedioPago;
+		this.desMedioPago=desMedioPago;
+		this.seguridad=seguridad;
+	}
+	
+	
+	
+	public Integer getIdMedioPago() {
 		return idMedioPago;
 	}
 
-	public void setIdMedioPago(int idMedioPago) {
+	public void setIdMedioPago(Integer idMedioPago) {
 		this.idMedioPago = idMedioPago;
 	}
 
