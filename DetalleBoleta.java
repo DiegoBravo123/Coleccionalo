@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="DetalleBoleta")
@@ -24,18 +26,20 @@ public class DetalleBoleta implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idDetalleBoleta;
 	
-	@Column(name="cantidad", nullable=false, length=10)
+	@Size(min=1, max=3, message="La cantidad de productos es de 1 a 3 digitos")
+	@Column(name="cantidad", nullable=false, length=3)
 	private int cantidad;
 	
+	@NotEmpty(message = "Debe ingresar un comentario del dia")
 	@Column(name="desComentario", nullable=false, length=250)
 	private String desComentario;
 	
 	/*@Column(name="totalMonto", nullable=false, length=10)
 	private int totalMonto;*/
 	
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name="idBoleta",nullable=false)
-	private Boleta boleta;
+	private Boleta boleta;*/
 
 	@ManyToOne
 	@JoinColumn(name="idProducto",nullable = false)
@@ -52,7 +56,7 @@ public class DetalleBoleta implements Serializable{
 		this.cantidad = cantidad;
 		//this.totalMonto = totalMonto;
 		this.desComentario = desComentario;
-		this.boleta = boleta;
+		//this.boleta = boleta;
 		this.producto = producto;
 	}
 
@@ -81,9 +85,9 @@ public class DetalleBoleta implements Serializable{
 	}*/
 	
 
-	public Boleta getBoleta() {
+	/*public Boleta getBoleta() {
 		return boleta;
-	}
+	}*/
 
 	public String getDesComentario() {
 		return desComentario;
@@ -93,9 +97,9 @@ public class DetalleBoleta implements Serializable{
 		this.desComentario = desComentario;
 	}
 
-	public void setBoleta(Boleta boleta) {
+	/*public void setBoleta(Boleta boleta) {
 		this.boleta = boleta;
-	}
+	}*/
 
 	public Producto getProducto() {
 		return producto;

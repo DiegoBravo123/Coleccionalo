@@ -37,17 +37,17 @@ public class Boleta implements Serializable{
 	@Column(name="fechaBoleta", nullable=false, length=45)
 	private Date fechaBoleta;
 	
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name="idCliente",nullable=false)
-	private Cliente cliente;
+	private Cliente cliente;*/
 	
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name="idMedioPago",nullable=false)
-	private Mediopago mediopago;
+	private Mediopago mediopago;*/
 	
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name="idTienda",nullable=false)
-	private Tienda tienda;
+	private Tienda tienda;*/
 	
 	
 	public Boleta() {
@@ -55,14 +55,14 @@ public class Boleta implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Boleta(Integer idBoleta, String desBoleta, Date fechaBoleta, Cliente cliente, Mediopago mediopago, Tienda tienda) {
+	public Boleta(Integer idBoleta, String desBoleta, Date fechaBoleta) {
 		super();
 		this.idBoleta = idBoleta;
 		this.desBoleta = desBoleta;
 		this.fechaBoleta = fechaBoleta;
-		this.cliente = cliente;
+		/*this.cliente = cliente;
 		this.mediopago = mediopago;
-		this.tienda=tienda;
+		this.tienda=tienda;*/
 	}
 
 	public Integer getIdBoleta() {
@@ -80,7 +80,7 @@ public class Boleta implements Serializable{
 	public void setFechaBoleta(Date fechaBoleta) {
 		this.fechaBoleta = fechaBoleta;
 	}
-
+/*
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -103,7 +103,7 @@ public class Boleta implements Serializable{
 
 	public void setTienda(Tienda tienda) {
 		this.tienda = tienda;
-	}
+	} */
 
 	public String getDesBoleta() {
 		return desBoleta;
