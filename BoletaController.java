@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -38,12 +39,14 @@ public class BoletaController {
 	private ITiendaService tS;
 	
 	@RequestMapping("/index")
+	@Secured({ "ROLE_CLIENTE" ,"ROLE_VENDEDOR","ROLE_ADMIN"})
 	public String irWelcome() {
 		return "welcome";
 	}
 	
 	
 	@GetMapping("/new")
+	@Secured({ "ROLE_VENDEDOR"})
 	public String newBoleta(Model model) {
 		model.addAttribute("boleta", new Boleta());
 		model.addAttribute("listClientes", cS.list());
@@ -53,6 +56,7 @@ public class BoletaController {
 	}
 	
 	@PostMapping("/save")
+	@Secured({ "ROLE_VENDEDOR"})
 	public String saveBoleta(@Valid Boleta boleta, BindingResult result, Model model, SessionStatus status)
 			throws Exception {
 		if (result.hasErrors()) {
@@ -79,6 +83,7 @@ public class BoletaController {
 	}
 	
 	@GetMapping("/list")
+	@Secured({ "ROLE_CLIENTE" ,"ROLE_VENDEDOR","ROLE_ADMIN"})
 	public String listBoleta(Model model) {
 		try {
 			model.addAttribute("boleta", new Boleta());
@@ -91,6 +96,7 @@ public class BoletaController {
 	
 	
 	@RequestMapping("/delete")
+	@Secured({ "ROLE_VENDEDOR"})
 	public String deleteBoleta(Map<String, Object> model, @RequestParam(value = "id") Integer id) {
 		try {
 			if (id != null && id > 0) {
@@ -109,6 +115,7 @@ public class BoletaController {
 	}
 	
 	@GetMapping("/modificar/{id}")
+	@Secured({ "ROLE_VENDEDOR"})
 	public String modificarBoleta(@PathVariable Integer id, Model model, RedirectAttributes objRedir) {
 
 		Optional<Boleta> objPro = bS.listarId(id);
