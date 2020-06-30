@@ -25,7 +25,7 @@ public class ClienteServiceImpl implements IClienteService, Serializable{
 	@Transactional
 	public Integer insertar(Cliente cliente) {
 		// TODO Auto-generated method stub
-		int rpta = cR.buscardesCliente(cliente.getDesCliente());
+		int rpta = 0; //cR.buscardesCliente(cliente.getDesCliente());
 		if (rpta == 0) {
 			cR.save(cliente);
 		}
@@ -39,11 +39,11 @@ public class ClienteServiceImpl implements IClienteService, Serializable{
 		return cR.findAll(Sort.by(Sort.Direction.DESC, "desCliente"));
 	}
 	
-	@Override
+	/*@Override
 	public List<Cliente> findByName(String desCliente) {
 		// TODO Auto-generated method stub
 		return cR.findBydesCliente(desCliente);
-	}
+	}*/
 	
 	@Override
 	public Optional<Cliente> listarId(Integer idCliente) {
