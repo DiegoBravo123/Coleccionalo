@@ -14,7 +14,7 @@ public interface IClienteService {
 
 	Optional<Cliente> listarId(Integer idCliente);
 
-	List<Cliente> findByName(String desCliente);
+	//List<Cliente> findByName(String desCliente);
 	
 	public void delete (int idCliente);
 }
