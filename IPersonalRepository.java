@@ -17,5 +17,7 @@ public interface IPersonalRepository extends JpaRepository<Personal, Integer>{
 	
 	@Query("select pe from Personal pe where pe.desPersonal like %:desPersonal%")
 	List<Personal> findBydesPersonal(String desPersonal);
+	
+	Personal findByUsername(String username);
 
 }

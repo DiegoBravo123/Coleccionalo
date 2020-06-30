@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-
+import pe.edu.upc.entity.Cliente;
 import pe.edu.upc.entity.Mediopago;
 
 @Repository
@@ -19,4 +19,6 @@ public interface IMediopagoRepository extends JpaRepository<Mediopago, Integer>{
 	
 	@Query("select m from Mediopago m where m.desMedioPago like %:desMedioPago%")
 	List<Mediopago> findBydesMediopago(String desMedioPago);
+	
+	List<Mediopago> findAllByCliente(Cliente cliente);
 }
