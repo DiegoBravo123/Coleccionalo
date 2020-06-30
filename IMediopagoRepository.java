@@ -15,7 +15,7 @@ import pe.edu.upc.entity.Mediopago;
 public interface IMediopagoRepository extends JpaRepository<Mediopago, Integer>{
 
 	@Query("select count(m.desMedioPago) from Mediopago m where m.desMedioPago =:desMedioPago")
-	public int buscardesMediopago(@Param("desMedioPago") String nombreJuego);
+	public int buscardesMediopago(@Param("desMedioPago") String desMedioPago);
 	
 	@Query("select m from Mediopago m where m.desMedioPago like %:desMedioPago%")
 	List<Mediopago> findBydesMediopago(String desMedioPago);
